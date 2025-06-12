@@ -1,0 +1,5 @@
+package tde2;
+
+public interface Exibivel {
+    void exibirDados();
+}
