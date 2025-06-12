@@ -1,0 +1,31 @@
+package exercicio10;
+
+import java.io.*;
+
+public class Exercicio2 {
+    public static void main(String[] args) {
+        int totalPalavras = 0;
+
+        try (FileReader fr = new FileReader("dados.txt");
+             BufferedReader br = new BufferedReader(fr)) {
+
+            String linha;
+            while ((linha = br.readLine()) != null) {
+                
+                String[] palavras = linha.trim().split("\\s+");
+                if (palavras.length == 1 && palavras[0].isEmpty()) {
+
+                    continue;
+                }
+                totalPalavras += palavras.length;
+            }
+
+            System.out.println("Número total de palavras no arquivo dados.txt: " + totalPalavras);
+
+        } catch (FileNotFoundException e) {
+            System.out.println("Arquivo dados.txt não encontrado.");
+        } catch (IOException e) {
+            System.out.println("Erro ao ler o arquivo: " + e.getMessage());
+        }
+    }
+}
