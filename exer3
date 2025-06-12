@@ -1,0 +1,33 @@
+package exercicio10;
+
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+
+public class Exercicio3 extends Application {
+    @Override
+    public void start(Stage primaryStage) {
+        TextField entrada = new TextField();
+        Button botao = new Button("Enviar");
+        Label mensagem = new Label();
+
+        botao.setOnAction(e -> {
+            String texto = entrada.getText();
+            mensagem.setText(texto);
+        });
+
+        VBox layout = new VBox(10); // 10 é o espaçamento entre elementos
+        layout.getChildren().addAll(entrada, botao, mensagem);
+
+        Scene cena = new Scene(layout, 300, 150);
+        primaryStage.setTitle("Simulador de Mensagens");
+        primaryStage.setScene(cena);
+        primaryStage.show();
+    }
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+}
