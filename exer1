@@ -1,0 +1,34 @@
+package exercicio10;
+
+import java.io.*;
+import java.util.Scanner;
+
+public class Exercicio1 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Digite um texto para salvar no arquivo:");
+        String texto = scanner.nextLine();
+
+        
+        try (FileWriter fw = new FileWriter("texto.txt");
+             BufferedWriter bw = new BufferedWriter(fw)) {
+            bw.write(texto);
+        } catch (IOException e) {
+            System.out.println("Erro ao escrever no arquivo: " + e.getMessage());
+        }
+
+        
+        try (FileReader fr = new FileReader("texto.txt");
+             BufferedReader br = new BufferedReader(fr)) {
+            System.out.println("\nConteúdo do arquivo texto.txt:");
+            String linha;
+            while ((linha = br.readLine()) != null) {
+                System.out.println(linha);
+            }
+        } catch (IOException e) {
+            System.out.println("Erro ao ler o arquivo: " + e.getMessage());
+        }
+        
+        scanner.close();
+    }
+}
